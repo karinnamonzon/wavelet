@@ -10,30 +10,19 @@ class Handler implements URLHandler {
     public String handleRequest(URI url) {
         if (url.getPath().equals("/")) {
             return String.join("\n", strList);
-        } else if (url.getPath().equals("/search")) {
-            ArrayList<String> forReturn = new ArrayList<>();
-            String[] parameters = url.getQuery().split("=");
-                    for(String s : strList)
-                    {
-                        if(s.contains(parameters[1]))
-                        {
-                            forReturn.add(s);
-                        }
-                    }
-                
-                return String.join(", ", forReturn);
-        
-            } 
-            else {
+        } 
+        else 
+        {
             System.out.println("Path: " + url.getPath());
-            if (url.getPath().contains("/add-message")) {
+            if (url.getPath().contains("/add-message")) 
+            {
                 String[] parameters = url.getQuery().split("=");
                 if (parameters[0].equals("s")) {
                     strList.add(parameters[1]);
                     return parameters[1] + " has been added!";
                 }
             }
-            return "";
+            return "";  
         }
     }
 }
