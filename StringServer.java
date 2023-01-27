@@ -23,7 +23,7 @@ class Handler implements URLHandler {
                     forReturn = "";
                     for (String str : strList)
 	                { 		      
-	                    forReturn += str; 		
+	                    forReturn += str + "\n"; 		
 	                }
                     return forReturn;
                 }
