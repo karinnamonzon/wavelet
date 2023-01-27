@@ -6,6 +6,7 @@ class Handler implements URLHandler {
     // The one bit of state on the server: a number that will be manipulated by
     // various requests.
     ArrayList<String> strList = new ArrayList<String>();
+    String forReturn = "";
 
     public String handleRequest(URI url) {
         if (url.getPath().equals("/")) {
@@ -19,7 +20,12 @@ class Handler implements URLHandler {
                 String[] parameters = url.getQuery().split("=");
                 if (parameters[0].equals("s")) {
                     strList.add(parameters[1]);
-                    return parameters[1] + " has been added!";
+                    forReturn = "";
+                    for (String str : strList)
+	                { 		      
+	                    forReturn += str; 		
+	                }
+                    return forReturn;
                 }
             }
             return "";  
